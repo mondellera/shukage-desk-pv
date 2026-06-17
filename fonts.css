@@ -1,0 +1,21 @@
+/* fonts.css — Local font declarations for ShuKage
+ * Referenced by sidepanel.html and welcome.html
+ */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Serif JP Kanji';
+  src: url('./fonts/NotoSerifJP-kanji.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* 朱影に交われば赤くなる */
+  unicode-range: U+6731, U+5F71, U+306B, U+4EA4, U+308F, U+308C, U+3070, U+8D64, U+304F, U+306A, U+308B;
+}

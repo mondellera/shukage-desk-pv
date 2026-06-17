@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/fonts.css">
+  <title>ShuKage — Privacy Policy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #7c0101d5;
+      background:
+        /*radial-gradient(circle at top, rgba(192,68,10,0.10), transparent 34%),*/
+        radial-gradient(circle at top, rgba(178, 90, 49, 0.1), transparent 34%),
+        linear-gradient(180deg, #f5e7e5 0%, #AB3B3A 100%);
+      padding: 40px 20px;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #faf8f4;
+      border-radius: 8px;
+      padding: 48px 56px;
+      box-shadow:
+        0 18px 60px rgba(0,0,0,0.30),
+        0 1px 4px rgba(0,0,0,0.10);
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo-ja {
+      font-family: 'Noto Serif JP Kanji', serif;
+      font-size: 44px;
+      font-weight: 300;
+      color: #2a2520;
+      display: block;
+      letter-spacing: 0.12em;
+      line-height: 1.1;
+    }
+
+    .logo-en {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: #c0440a;
+      font-weight: 400;
+      margin-top: 4px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111;
+      margin-top: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #333;
+    }
+
+    ul {
+      margin: 0 0 14px 20px;
+      color: #333;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: #f4f4f2;
+      border: 1px solid #e8e8e2;
+      border-radius: 3px;
+      padding: 1px 4px;
+    }
+
+    .highlight {
+      background: #fff8f5;
+      border-left: 3px solid #c0440a;
+      padding: 14px 18px;
+      border-radius: 0 4px 4px 0;
+      margin: 24px 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+      font-size: 13px;
+      color: #999;
+    }
+
+    footer a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #c0440a;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 24px 12px;
+      }
+
+      .wrap {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div style="position:relative; text-align:center; margin-bottom:32px;">
+    <a href="index.html" style="position:absolute;left:0;top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#999;text-decoration:none;">← Home</a>
+    <div class="logo-wrap" style="margin-bottom:0">
+      <span class="logo-ja">朱影</span>
+      <span class="logo-en">SHUKAGE</span>
+    </div>
+  </div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: April 2026</p>
+
+  <div class="highlight">
+    ShuKage does not collect, transmit, sell, or share any personal data.
+    All information you create — videos, markers, recordings, tags, notes,
+    settings, and practice history — is stored on your own device.
+  </div>
+
+  <h2>What ShuKage is</h2>
+  <p>
+    ShuKage is a Chrome extension for shadowing practice on YouTube.
+    It lets you create A-B markers, loop selected video segments, record your voice,
+    and review your practice history directly in your browser.
+  </p>
+
+  <h2>What data is stored</h2>
+  <p>
+    ShuKage stores the following data locally on your device using Chrome's
+    built-in browser storage mechanisms:
+  </p>
+
+  <ul>
+    <li>YouTube video URLs and titles you register in the library</li>
+    <li>Markers, A-B positions, ratings, tags, and notes you create</li>
+    <li>Audio recordings you make using the microphone</li>
+    <li>Practice statistics, recording history, and rating history</li>
+    <li>Extension settings and preferences</li>
+  </ul>
+
+  <p>
+    This data is stored using <code>chrome.storage.local</code> and IndexedDB.
+    It does not leave your device unless you explicitly export it using the
+    built-in export feature.
+  </p>
+
+  <h2>Microphone access</h2>
+  <p>
+    ShuKage requests microphone access only when you initiate a recording.
+    Audio data is processed locally in your browser and saved to your device's
+    local browser storage. No audio is transmitted to any server.
+  </p>
+
+  <h2>YouTube access</h2>
+  <p>
+    ShuKage operates on supported YouTube pages to provide playback controls,
+    marker management, recording features, and related language-learning tools.
+    This includes reading publicly available video metadata (such as the
+    video's audio language and caption tracks) to automatically fill in
+    marker details like the language field.
+    It does not read, collect, or transmit your YouTube account information,
+    private account data, or YouTube viewing history.
+  </p>
+
+  <h2>No external servers</h2>
+  <p>
+    The ShuKage extension itself does not send data to any external server,
+    analytics service, advertising service, or third party. There are no accounts,
+    no sign-ins, no cloud sync, and no advertising features.
+  </p>
+
+  <h2>No analytics or tracking</h2>
+  <p>
+    ShuKage does not use analytics tools, tracking pixels, advertising identifiers,
+    or third-party tracking scripts. The extension does not monitor your activity
+    outside the supported pages where its features are used.
+  </p>
+
+  <h2>Data export and deletion</h2>
+  <p>
+    You can export your library data at any time using the export feature.
+    Exported backup files are created only when you choose to export them, and
+    they remain wherever you save them.
+  </p>
+
+  <p>
+    To delete ShuKage data, use the cleanup tools within the extension where
+    available, or remove the extension from Chrome. Removing the extension normally
+    deletes extension data stored by Chrome, but exported backup files remain
+    outside the extension and must be deleted separately if you no longer want them.
+  </p>
+
+  <h2>Data sharing</h2>
+  <p>
+    ShuKage does not share your data with anyone. Because the extension does not
+    collect or transmit your data, there is no server-side database, user account,
+    or cloud profile associated with your use of ShuKage.
+  </p>
+
+  <h2>Children's privacy</h2>
+  <p>
+    ShuKage is intended as a personal language-learning tool. It does not knowingly
+    collect personal information from anyone, including children.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this privacy policy is updated, the new version will be made available on
+    this page with an updated date. Significant changes will be noted in the
+    extension's release notes or support documentation.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    If you have any questions about this privacy policy or how ShuKage handles
+    data, please open an issue on the project's GitHub repository.
+  </p>
+
+  <p>
+    Please do not include personal information, private recordings, exported
+    backup files, authentication tokens, or other sensitive data in public GitHub
+    issues.
+  </p>
+
+  <footer>
+    ShuKage (朱影) — Shadowing for Language Immersion on YouTube<br>
+    This extension is provided as-is for personal language learning use.<br>
+    <a href="terms.html">Terms of Use</a>
+  </footer>
+</div>
+</body>
+</html>

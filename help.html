@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/fonts.css">
+  <title>ShuKage — Help</title>
+  <style>
+    :root {
+      --bg:       #0e0e0e;
+      --surface:  #161616;
+      --border:   #2a2a2a;
+      --accent:   #AB3B3A;
+      --accent-d: rgb(172,59,58 / 0.8);
+      --text:     #d0d0d0;
+      --text-dim: #888;
+      --text-faint: #555;
+      --brand-ja: 'Noto Serif JP Kanji', serif;
+      --brand-en: 'JetBrains Mono', monospace;
+      --mono:     'JetBrains Mono', 'Courier New', monospace;
+      --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --loop:     monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 120px;
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-wrap {
+      text-align: center;
+    }
+
+    .logo-ja {
+      font-family: 'Noto Serif JP Kanji', serif;
+      font-size: 44px;
+      font-weight: 300;
+      color: var(--text);
+      display: block;
+      letter-spacing: 0.12em;
+      line-height: 1.1;
+    }
+
+    .logo-en {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      font-weight: 400;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .version {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+    }
+
+    .home-link {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+
+    .home-link:hover { color: var(--text-dim); }
+
+    /* ── TOC ── */
+    nav {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 48px;
+    }
+
+    nav .toc-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-faint);
+      margin-bottom: 10px;
+    }
+
+    nav ol {
+      list-style: none;
+      counter-reset: toc;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    nav ol li { counter-increment: toc; }
+
+    nav ol li a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.15s;
+    }
+
+    nav ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      min-width: 20px;
+    }
+
+    nav ol li a:hover { color: var(--text); }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 56px;
+    }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin: 28px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p { margin-bottom: 12px; color: var(--text-dim); }
+
+    /* ── Steps ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      counter-reset: step;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 0 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      counter-increment: step;
+      position: relative;
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      padding-top: 2px;
+      font-weight: 700;
+    }
+
+    .step-num::before { content: counter(step, decimal-leading-zero); }
+
+    .step-content strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .step-content span { color: var(--text-dim); font-size: 13px; }
+
+    .step-note {
+      grid-column: 2;
+      background: var(--surface);
+      border-left: 2px solid var(--accent);
+      padding: 8px 12px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── Reference ── */
+    .ref-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .ref-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 2px;
+      transition: background 0.1s;
+    }
+
+    .ref-item:hover { background: var(--surface); }
+
+    .ref-key {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      display: flex;
+      align-items: flex-start;
+      padding-top: 1px;
+    }
+
+    .ref-val {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ── Callout ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 16px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .callout strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Code ── */
+    code {
+      font-family: var(--mono);
+      font-size: 11px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      border-radius: 2px;
+      color: var(--accent);
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="home-link" href="index.html">← Home</a>
+    <div class="logo-wrap">
+      <span class="logo-ja">朱影</span>
+      <span class="logo-en">SHUKAGE</span>
+    </div>
+    <span class="version">v0.1.0</span>
+  </header>
+
+  <nav>
+    <div class="toc-title">CONTENTS</div>
+    <ol>
+      <li><a href="#intro">What is ShuKage?</a></li>
+      <li><a href="#quickstart">Basic workflow</a></li>
+      <li><a href="#reference">Feature reference</a></li>
+      <li><a href="#caveats">Known issues &amp; notes</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. Intro -->
+  <section id="intro">
+    <div class="section-num">01</div>
+    <h2>What is ShuKage?</h2>
+    <p>ShuKage is a Chrome extension for shadowing practice on YouTube. Shadowing means listening to a short audio segment and speaking (or recording yourself speaking) in sync with the speaker, which is an effective technique for pronunciation and fluency in language learning.</p>
+    <p>ShuKage lets you mark any section of a YouTube video as a <em>marker</em>, loop it, record your voice over it, and compare your recording with the original — all without leaving the page.</p>
+  </section>
+
+  <!-- 2. Basic workflow -->
+  <section id="quickstart">
+    <div class="section-num">02</div>
+    <h2>Basic workflow</h2>
+
+    <p>The typical flow from opening a video to completing a shadowing session:</p>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Open a YouTube video</strong>
+          <span>Navigate to any YouTube video. You don't need to add it to the library first — if you set A/B and press <code>ADD</code>, the video and marker are registered together automatically.</span>
+        </div>
+        <div class="step-note">
+          To add a video without a marker (e.g. to browse it later), click the <code>＋</code> button in the sidebar header while the video is playing.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Set the A and B points</strong>
+          <span>Play the video to where you want the loop to start, then click <code>&lt;</code> to set point A. Do the same for the end point with <code>&gt;</code> for B.</span>
+        </div>
+        <div class="step-note">
+          The <strong>A</strong> and <strong>B</strong> label buttons seek to the saved marker position (double-click to also play from there). They are not used for setting points.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Add a marker</strong>
+          <span>Click <code>ADD</code> to save the A–B range as a marker. The marker appears in the sidebar tree under the video.</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Select the marker and listen a few times</strong>
+          <span>Click the marker in the tree to select it. Use the loop button <code>⟳</code> to loop the segment. Listen carefully before attempting to shadow.</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Shadow-record with auto-playback recording</strong>
+          <span>This is the main recording mode. Click the loop play button to start the segment playing. The extension automatically starts recording your microphone when playback begins, and stops recording when playback stops at point B.</span>
+        </div>
+        <div class="step-note">
+          Speak along with the audio as it plays. When the segment ends, your recording is saved automatically — no need to press stop.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Review your recording</strong>
+          <span>Open the marker properties (click the marker in the tree). Your recording appears as a waveform. Play it back and compare it with the original waveform shown above it.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. Reference -->
+  <section id="reference">
+    <div class="section-num">03</div>
+    <h2>Feature reference</h2>
+
+    <h3>Control bar</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">A / B labels</span><span class="ref-val">Show the current A/B time. A border appears when the point differs from the saved marker (unsaved change).</span></div>
+      <div class="ref-item"><span class="ref-key">&lt; / &gt;</span><span class="ref-val">Set A or B to the current playback position.</span></div>
+      <div class="ref-item"><span class="ref-key">Playback time</span><span class="ref-val">Click to toggle between absolute position and elapsed time from A. B time follows the same format.</span></div>
+      <div class="ref-item"><span class="ref-key">UPDATE</span><span class="ref-val">Save the current A/B values to the selected marker.</span></div>
+      <div class="ref-item"><span class="ref-key">ADD</span><span class="ref-val">Create a new marker with the current A/B values.</span></div>
+      <div class="ref-item">
+        <span class="ref-key" style="display:flex;align-items:center;gap:10px;">
+          <span style="display:inline-grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;line-height:1;font-family:var(--loop);font-size:11px;"><span style="color:var(--text-dim)">┏</span><span style="color:var(--text-dim)">┓</span><span style="color:var(--text-dim)">┗</span><span style="color:var(--text-dim)">┛</span></span>
+          <span style="display:inline-grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;line-height:1;font-family:var(--loop);font-size:11px;"><span style="color:var(--accent)">┏</span><span style="color:var(--accent)">┓</span><span style="color:var(--accent)">┗</span><span style="color:var(--accent);font-size:8px;line-height:1">1</span></span>
+          <span style="display:inline-grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;line-height:1;font-family:var(--loop);font-size:11px;"><span style="color:var(--accent)">┏</span><span style="color:var(--accent)">┓</span><span style="color:var(--accent)">┗</span><span style="color:var(--accent)">┛</span></span>
+        </span>
+        <span class="ref-val">Toggle loop mode: off → oneshot (play once) → endless (repeat).</span>
+      </div>
+      <div class="ref-item"><span class="ref-key">‹ / › (frame)</span><span class="ref-val">Step one frame backward or forward.</span></div>
+      <div class="ref-item"><span class="ref-key">Speed buttons</span><span class="ref-val">Set playback speed (0.5×, 0.75×, 1×, etc.).</span></div>
+      <div class="ref-item"><span class="ref-key">CC</span><span class="ref-val">Toggle YouTube subtitles.</span></div>
+    </div>
+
+    <h3>Recording modes</h3>
+    <div class="ref-grid">
+      <div class="ref-item">
+        <span class="ref-key">Auto-playback recording</span>
+        <span class="ref-val">The main recording mode. Recording starts and stops automatically with playback. Select a marker, start AB loop playback, and speak along. Recommended for most shadowing sessions.</span>
+      </div>
+      <div class="ref-item">
+        <span class="ref-key">Manual REC button</span>
+        <span class="ref-val">Starts recording immediately, regardless of playback state. You must press REC again to stop. Useful for free-form recording outside a defined AB segment. The button label shows the recording time limit (e.g. <code>⏺ 10:00</code>).</span>
+      </div>
+    </div>
+
+    <h3>Sidebar — tree &amp; views</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">⏒ Language tree</span><span class="ref-val">Default view. Videos grouped by language, markers shown under each video.</span></div>
+      <div class="ref-item"><span class="ref-key">□ Channel tree</span><span class="ref-val">Videos grouped by YouTube channel.</span></div>
+      <div class="ref-item"><span class="ref-key"># Tag tree</span><span class="ref-val">Markers grouped by tag.</span></div>
+      <div class="ref-item"><span class="ref-key">⊟ Table</span><span class="ref-val">All markers in a sortable table with difficulty, familiarity, recording count, etc. Hover column headers for tooltips.</span></div>
+      <div class="ref-item"><span class="ref-key">☋ Collapse all</span><span class="ref-val">Collapse all expanded nodes in the tree.</span></div>
+    </div>
+
+    <h3>Marker properties</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">Difficulty / Familiarity</span><span class="ref-val">Rate the segment 1–5 for how hard it is and how well you know it. Tracked over time in Practice Stats.</span></div>
+      <div class="ref-item"><span class="ref-key">Memo</span><span class="ref-val">Free-text notes for the marker.</span></div>
+      <div class="ref-item"><span class="ref-key">Tags</span><span class="ref-val">Add comma-separated tags for grouping.</span></div>
+      <div class="ref-item"><span class="ref-key">Recs</span><span class="ref-val">Each recording appears as an  waveform. Click to seek, play to compare with the original.</span></div>
+    </div>
+
+    <h3>Backup &amp; restore</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">↓ Export</span><span class="ref-val">Save the full library (videos, markers, recordings, history) as a <code>.json</code> file. Filename includes the local timestamp.</span></div>
+      <div class="ref-item"><span class="ref-key">↑ Import</span><span class="ref-val">Restore from a backup file. Options: full restore (with recordings) or metadata only. Check <em>restore total &amp; usage days from backup</em> to recover the usage history. Data added after the backup is preserved (merged, not overwritten).</span></div>
+    </div>
+
+    <h3>Practice Stats (Σ)</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">Summary row</span><span class="ref-val">Days since first use, days with activity, recording count, streak, storage used.</span></div>
+      <div class="ref-item"><span class="ref-key">Heatmap</span><span class="ref-val">Daily recording activity over the selected period.</span></div>
+      <div class="ref-item"><span class="ref-key">Familiarity / Difficulty charts</span><span class="ref-val">BAR: average rating per video. LINE: rating count over time. Switch with BAR / LINE buttons.</span></div>
+      <div class="ref-item"><span class="ref-key">⟳ Rebuild</span><span class="ref-val">Reconstruct usage-day history from the activity log (useful after migration).</span></div>
+    </div>
+
+    <h3>Settings (⚙)</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">Accent color</span><span class="ref-val">Sets the highlight color used throughout the UI and the control bar.</span></div>
+      <div class="ref-item"><span class="ref-key">Font profiles</span><span class="ref-val">Create and apply custom font stacks for the sidebar text (language labels, video titles, marker titles).</span></div>
+      <div class="ref-item"><span class="ref-key">Recordings — limit</span><span class="ref-val">Maximum recording duration (1 min to 30 min).</span></div>
+      <div class="ref-item"><span class="ref-key">Recordings — ui rate</span><span class="ref-val">Update frequency of the playback position display. <em>Normal</em> or <em>Light</em> may help if video playback stutters with the extension active.</span></div>
+    </div>
+
+    <h3>Cleanup (c)</h3>
+    <div class="ref-grid">
+      <div class="ref-item"><span class="ref-key">Cleanup</span><span class="ref-val">Removes orphaned audio recordings that no longer have a corresponding marker. Safe to run at any time.</span></div>
+    </div>
+
+  </section>
+
+  <!-- 4. Known issues -->
+  <section id="caveats">
+    <div class="section-num">04</div>
+    <h2>Known issues &amp; notes</h2>
+
+    <h3>Brave — fullscreen / theater mode</h3>
+    <div class="callout">
+      <strong>KNOWN ISSUE (Brave v1.91.168)</strong>
+      When using Brave with the sidebar panel open, switching from YouTube fullscreen back to theater mode may cause a layout shift — the video area becomes slightly oversized and the ShuKage control bar may be displaced or hidden. This layout issue also occurs with Brave's own sidebar panel when ShuKage is disabled, which points to a Brave-side rendering behavior rather than an extension-specific problem.
+      <br><br>
+      We are monitoring Brave updates for a fix before considering further workarounds.
+      <br><br>
+      <strong>In the meantime:</strong> hiding the sidebar panel and resizing manually restores the correct layout. Alternatively, open the video in a new window where the issue does not occur.
+    </div>
+
+    <h3>Disabling the extension</h3>
+    <div class="callout">
+      <strong>Toolbar toggle vs. chrome://extensions</strong>
+      Clicking the extension icon in the browser toolbar to turn ShuKage off is a <em>per-site temporary toggle</em> — reloading the page may re-enable it. To fully disable the extension, go to <code>chrome://extensions</code> and use the enable/disable switch. After disabling there, reload the page and the extension will remain off.
+    </div>
+
+    <h3>Recording destination</h3>
+    <div class="callout">
+      <strong>NOTE</strong>
+      Recordings are saved to whichever marker is selected at the time recording stops — not necessarily the one that was active when recording started. If you switch markers during a recording session, the recording will be saved to the newly selected marker. This can be used intentionally to route recordings to a specific marker.
+      <br><br>
+      Switching markers resets the ▶⏺ button back to its inactive state, so auto-stop no longer applies. To stop recording, either pause playback using the ⏸ button (or YouTube's own controls) — recording will stop automatically after the stop gap — or click the ⏹ REC button to stop recording directly.
+    </div>
+
+    <h3>Tab switching during recording</h3>
+    <div class="callout">
+      <strong>NOTE</strong>
+      ShuKage monitors the active YouTube tab. Switching tabs may interrupt B-point detection, causing the A–B loop to stop working while the video keeps playing. If this happens, return to the original tab and stop playback manually, or use the ▶⏺ button to stop auto-playback recording. As long as you stay on a single tab, none of this applies.
+    </div>
+    <div class="callout">
+      <strong>NOTE</strong>
+      If you reload the extension from <code>chrome://extensions</code> (e.g. after updating), the control bar on any open YouTube tabs may become unresponsive. Refresh those tabs to restore normal operation.
+    </div>
+
+  </section>
+
+  <footer>
+    <span>朱影 SHUKAGE v0.1.0</span>
+    <span>SHADOWING FOR LANGUAGE IMMERSION ON YOUTUBE</span>
+  </footer>
+
+</body>
+</html>

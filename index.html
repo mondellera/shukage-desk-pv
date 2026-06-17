@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="src/fonts.css">
+<title>Welcome to ShuKage</title>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0e;
+    --vermilion: #AB3B3A;
+    --shukage-rgba: rgba(171,59,58,1.0);
+    --vermilion-dim: rgba(192,68,10,0.12);
+    --gold: #b8860b;
+    --stone: #2a2520;
+    --mist: #f4f1ec;
+    --paper: #faf8f4;
+    --border: rgba(0,0,0,0.08);
+    --footer: rgba(var(--vermilion) / 0.9);
+  }
+
+  html { background: var(--paper); }
+
+  body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '影';
+    position: absolute;
+    font-family: serif;
+    font-size: 60vw;
+    font-weight: 300;
+    color: rgba(192,68,10,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+  }
+
+  .badge {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--vermilion);
+    border: 1px solid var(--vermilion);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .logo-wrap {
+    text-align: center;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.25s forwards;
+  }
+
+  .logo-ja {
+    font-family: serif;
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 300;
+    color: var(--stone);
+    display: block;
+    letter-spacing: 0.12em;
+  }
+
+  .logo-en {
+    font-size: clamp(13px, 2vw, 16px);
+    letter-spacing: 0.22em;
+    color: var(--vermilion);
+    font-weight: 400;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .tagline {
+    font-family: serif;
+    font-weight: 300;
+    font-size: clamp(13px, 2vw, 16px);
+    color: #666;
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.9;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--vermilion);
+    color: #fff;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    padding: 14px 32px;
+    margin-bottom: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.55s forwards;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cta:hover { background: #a03808; transform: translateY(-1px); }
+  .cta-arrow { font-size: 16px; transition: transform 0.2s; }
+  .cta:hover .cta-arrow { transform: translateX(4px); }
+
+  /* ── Top CTA row (Add to Chrome / Support) — pages-site only ── */
+  /*
+    .cta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+    */
+
+  /*
+  .cta-disabled {
+  background: transparent;
+  color: rgba(171, 59, 58, 0.45);
+  border: 1px dashed rgba(171, 59, 58, 0.35);
+  cursor: default;
+  pointer-events: none;
+  }
+
+  .cta-row {
+    margin-top: 18px;
+  }
+*/
+
+ /* ── Small button row ── */
+
+  .cta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ── Hero actions ── */
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions > .cta {
+    display: inline-flex;
+    margin-bottom: 48px;
+    opacity: 1;
+    animation: none;
+  }
+
+  .hero-actions > .cta-row {
+    margin-bottom: 0;
+  }
+
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 9px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.15s, border-color 0.15s, color 0.15s;
+  }
+
+  .btn-sm-primary {
+    background: var(--vermilion);
+    color: #fff;
+  }
+  .btn-sm-primary:hover { background: #a03808; }
+
+  .btn-sm-secondary {
+    background: transparent;
+    color: var(--vermilion);
+    border: 1px solid rgba(171, 59, 58, 0.35);
+  }
+
+  .btn-sm-secondary:hover {
+    border-color: var(--vermilion);
+    color: var(--vermilion);
+  }
+
+  .btn-sm-disabled {
+    background: transparent;
+    color: rgba(171, 59, 58, 0.45);
+    border: 1px dashed rgba(171, 59, 58, 0.35);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .btn-sm-badge {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    color: rgba(171, 59, 58, 0.55);
+    border: 1px solid rgba(171, 59, 58, 0.35);
+    border-radius: 2px;
+    padding: 1px 4px;
+    margin-left: 2px;
+  }
+  
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: #bbb;
+    animation: pulse 2s 1.5s infinite;
+  }
+
+  /* ── Steps ── */
+  .steps {
+    background: var(--mist);
+    padding: 80px 24px;
+  }
+
+  .steps-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--vermilion);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .step-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .step {
+    background: var(--paper);
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .step-num {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--vermilion);
+    margin-bottom: 12px;
+  }
+
+  .step-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--stone);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .step-desc {
+    font-size: 11px;
+    color: #777;
+    line-height: 1.7;
+  }
+
+  /* ── Features ── */
+  .features {
+    padding: 80px 24px;
+    background: var(--paper);
+  }
+
+  .features-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .feat-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .feat {
+    border-left: 2px solid var(--vermilion-dim);
+    padding: 4px 0 4px 16px;
+  }
+
+  .feat-name {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--vermilion);
+    margin-bottom: 6px;
+  }
+
+  .feat-desc {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ── Privacy strip ── */
+  .privacy {
+    background: var(--stone);
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .privacy span { display: flex; align-items: center; gap: 6px; }
+  .privacy strong { color: rgba(255,255,255,0.7); }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 24px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">CHROME EXTENSION — V 0.1.0</div>
+
+  <div class="logo-wrap">
+    <span class="logo-ja">朱影</span>
+    <span class="logo-en">SHUKAGE</span>
+  </div>
+
+  <p class="tagline">
+    Shadowing for Language Immersion on YouTube.<br>
+    朱に交われば赤くなる — Immerse yourself, become the language.
+  </p>
+
+  <div class="hero-actions">
+    <a class="cta" href="https://mondellera.github.io/shukage-desk-test/addtochrome.html" target="_blank" rel="noopener">
+      ↓ Add to Chrome <span class="cta-arrow">→</span>
+    </a>
+
+    <div class="cta-row">
+      <a class="btn-sm btn-sm-secondary" href="#how">
+        Get started
+      </a>
+      <a class="btn-sm btn-sm-secondary" href="#support">
+        ⚑ Support
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">SCROLL TO EXPLORE</div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="steps" id="how">
+  <div class="steps-inner">
+    <div class="section-label">HOW TO USE</div>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Open a YouTube video</div>
+        <div class="step-desc">Navigate to any YouTube watch page in your browser. ShuKage activates automatically.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Click the ShuKage icon</div>
+        <div class="step-desc">Click the extension icon in the toolbar to open the side panel. A control bar appears at the bottom of the video.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Set A and B points</div>
+        <div class="step-desc">While the video plays, click <strong>&lt;</strong> to set point A and <strong>&gt;</strong> for point B. Press ADD to save the segment as a marker. The video is added to your library automatically if not already registered.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Loop and shadow</div>
+        <div class="step-desc">Enable A-B loop. Listen once, then speak along. Recording starts automatically when playback begins and stops when the segment ends.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-title">Review and repeat</div>
+        <div class="step-desc">Open the WaveScope to compare your recordings. Rate markers by difficulty and track your progress in Stats.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <div class="section-label">KEY FEATURES</div>
+    <div class="feat-list">
+      <div class="feat">
+        <div class="feat-name">LIBRARY</div>
+        <div class="feat-desc">Organize content by language, markers, tags, and difficulty. Import/export keeps your data manageable as your collection grows.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">MARKERS</div>
+        <div class="feat-desc">Define any A-B segment in a video. Attach names, ratings, tags, notes, and recordings to each moment.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">A-B LOOP</div>
+        <div class="feat-desc">Repeat any segment with configurable pause time between iterations — your shadow window.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">RECORDING</div>
+        <div class="feat-desc">Capture your voice to check pronunciation and conversation rhythm. All audio stays on your device.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">WAVESCOPE</div>
+        <div class="feat-desc">Review recordings as waveforms. Stack multiple takes for side-by-side comparison.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">AUTO-RECORD MODE</div>
+        <div class="feat-desc">Recording starts with playback and stops automatically after a set delay when the video pauses.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">TIMELINE BAR</div>
+        <div class="feat-desc">Visual marker overlay on the video timeline for instant navigation and at-a-glance context.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">STATS</div>
+        <div class="feat-desc">Track practice history, recording volume, and difficulty trends over time with charts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<div class="privacy">
+  <span>🔒 <strong>No accounts</strong></span>
+  <span>🚫 <strong>No ads</strong></span>
+  <span>📦 <strong>All data stays on your device</strong></span>
+  <span>🌐 <strong>Works on any YouTube video</strong></span>
+</div>
+
+<!-- KNOWN ISSUES -->
+<section style="background:#111;padding:48px 24px">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="section-label" style="margin-bottom:24px">NOTES &amp; KNOWN BEHAVIOR</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+      <div class="feat">
+        <div class="feat-name">AFTER UPDATING</div>
+        <div class="feat-desc">After updating the extension, reload any open YouTube tabs to ensure the latest version is active. If the control bar disappears or becomes unresponsive, reloading the page will restore it.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">SIDE PANEL BEHAVIOR</div>
+        <div class="feat-desc">When switching tabs or using the browser back button, the icon state may occasionally differ from the actual on/off state. This is a browser limitation. Opening a YouTube video and clicking the icon will restore the correct state.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">NON-YOUTUBE TABS</div>
+        <div class="feat-desc">ShuKage automatically turns off when you navigate away from a YouTube video page. To re-enable, navigate to a YouTube video and click the extension icon.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">BRAVE BROWSER</div>
+        <div class="feat-desc">On Brave, the side panel occupies screen width which may cause YouTube to hide the video title and description in normal view. Switching to YouTube's wide or theater mode resolves this.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="features-inner">
+    <div class="section-label">TIPS</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-name">RECORDING: FILE FORMAT</div>
+        <div class="feat-desc">
+          <p>Chrome records audio in WebM container with Opus codec — a browser standard. The sample rate is determined by your OS audio settings (typically 48 kHz). WebM/Opus offers excellent quality at small file sizes and is widely supported in modern browsers and media players.</p><br></div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">RECORDING: CONVERTING WITH FFMPEG</div>
+        <div class="feat-desc">
+          <p>If you need MP3, WAV, or M4A, <a href="https://ffmpeg.org" target="_blank" style="color:rgba(232,100,26,0.8)">ffmpeg</a> is a free command-line tool that converts audio formats easily.
+          </p><br>
+          <code style="display:block;background:rgba(0,0,0,0.4);padding:8px 12px;border-radius:4px;font-size:11px;line-height:1.8;color:#ccc">
+            # WebM → MP3<br>
+            ffmpeg -i recording.webm output.mp3<br><br>
+            # WebM → WAV (lossless)<br>
+            ffmpeg -i recording.webm output.wav<br><br>
+            # WebM → M4A<br>
+            ffmpeg -i recording.webm -c:a aac output.m4a
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="features" id="support">
+  <div class="features-inner">
+    <div class="section-label">SUPPORT</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-name">GETTING HELP</div>
+        <div class="feat-desc">
+          ShuKage is developed and maintained by a single developer.
+          Bug reports and feature requests are welcome via GitHub Issues.
+          A GitHub account is required to open or comment on issues.
+          Response times may vary, and not all requests can be addressed —
+          thank you for your understanding.
+          <br><br>
+          Before opening an issue, please remember that GitHub Issues are public.
+          Do not include personal information, private recordings, exported backup files,
+          authentication tokens, or other sensitive data.
+          <br><br>
+          <a href="https://github.com/mondellera/shukage-desk/issues" target="_blank" style="color:rgba(232,100,26,0.8)">Open an issue on GitHub →</a><br><br>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-name">DOCUMENTATION</div>
+        <div class="feat-desc">
+          For detailed usage instructions, feature reference, and known issues,
+          see the Help page.
+          <br><br>
+          <a href="help.html" style="color:rgba(232,100,26,0.8)">Open Help →</a><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="color:rgba(255,255,255,0.5);text-decoration:none">
+  朱影 SHUKAGE — SHADOWING FOR LANGUAGE IMMERSION ON YOUTUBE &nbsp;·&nbsp;
+  <a href="privacy-policy.html" style="color:rgba(255,255,255,0.5);text-decoration:none">Privacy Policy | </a>
+  <a href="terms.html" style="color:rgba(255,255,255,0.5);text-decoration:none">Term of Use | </a>
+  <a href="help.html" style="color:rgba(255,255,255,0.5);text-decoration:none">Help</a> &nbsp;·&nbsp;
+  <!-- a href="#support" style="color:rgba(255,255,255,0.5);text-decoration:none">SUPPORT</a> &nbsp;·&nbsp; -->
+</footer>
+
+</body>
+</html>
