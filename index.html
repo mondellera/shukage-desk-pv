@@ -245,6 +245,31 @@
   }
 
   /* ── Steps ── */
+  /* ── Why shadowing ── */
+  .why {
+    padding: 80px 24px;
+  }
+
+  .why-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .why-text {
+    font-size: 12px;
+    line-height: 1.9;
+    color: #777;
+    margin-bottom: 16px;
+  }
+
+  .why-text em {
+    font-style: italic;
+    color: var(--stone);
+  }
+
+  .why-text:last-child { margin-bottom: 0; }
+
   .steps {
     background: var(--mist);
     padding: 80px 24px;
@@ -407,6 +432,27 @@
   <div class="scroll-hint">SCROLL TO EXPLORE</div>
 </section>
 
+<!-- WHY SHADOWING -->
+<section class="why">
+  <div class="why-inner">
+    <div class="section-label">WHY SHADOWING</div>
+    <p class="why-text">
+      Shadowing — listening to spoken language and echoing it in real time — is,
+      by recent accounts, gaining recognition in cognitive science as an effective
+      way to develop a natural feel for a language. Once known mainly as training
+      for simultaneous interpreters, it has found a wider audience as a path to
+      language immersion.
+    </p>
+    <p class="why-text">
+      ShuKage brings shadowing practice directly into YouTube, the world's richest
+      source of authentic spoken language. Whether you want to truly <em>touch</em>
+      a new language rather than formally study it — or you're an interpreter
+      looking for spare-moment practice — ShuKage is built for immersion at your
+      own pace.
+    </p>
+  </div>
+</section>
+
 <!-- HOW TO USE -->
 <section class="steps" id="how">
   <div class="steps-inner">
@@ -435,7 +481,7 @@
       <div class="step">
         <div class="step-num">05</div>
         <div class="step-title">Review and repeat</div>
-        <div class="step-desc">Open the WaveScope to compare your recordings. Rate markers by difficulty and track your progress in Stats.</div>
+        <div class="step-desc">Open the WaveScope to compare your recordings. Rate each marker (difficulty, familiarity, and more) and track your progress in Stats.</div>
       </div>
     </div>
   </div>
@@ -476,7 +522,7 @@
       </div>
       <div class="feat">
         <div class="feat-name">STATS</div>
-        <div class="feat-desc">Track practice history, recording volume, and difficulty trends over time with charts.</div>
+        <div class="feat-desc">Track practice history, recording volume, and rating trends (difficulty, familiarity) over time with charts.</div>
       </div>
     </div>
   </div>
