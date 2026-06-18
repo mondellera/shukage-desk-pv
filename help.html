@@ -92,6 +92,37 @@
 
     .home-link:hover { color: var(--text-dim); }
 
+
+/*header {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 3.4rem; /* メタ2行ぶんの居場所 
+}*/
+
+
+.header-doc-meta {
+  position: absolute;
+  right: 0;
+  bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+
+  color: var(--text-faint);
+  font-size: 0.74em;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.header-doc-meta a {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-doc-meta a:hover { color: var(--text-dim); }
+
     /* ── TOC ── */
     nav {
       background: var(--surface);
@@ -151,6 +182,24 @@
       letter-spacing: 0.12em;
       margin-bottom: 6px;
     }
+    .doc-meta {
+      margin: 0.8rem 0 2.5rem;
+      color: var(--text-faint);
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
+    .doc-meta-sub {
+      margin-left: 0.25em;
+    }
+    
+    .doc-latest-link {
+      margin-left: 0.9em;
+      color: inherit;
+      text-decoration: none;
+      /*text-underline-offset: 0.16em;*/
+      white-space: nowrap;
+    }
+   .doc-latest-link:hover { color: var(--text-dim); }
 
     h2 {
       font-size: 18px;
@@ -310,6 +359,20 @@
       <span class="logo-en">SHUKAGE</span>
     </div>
     <span class="version">v0.1.0</span>
+
+<div class="header-doc-meta">
+  <div>
+    Last updated: April 2026
+    <span>(Bundled)</span>
+  </div>
+  <a
+    href="https://mondellera.github.io/shukage-desk/help.html"
+    target="_blank"
+    rel="noopener"
+  >
+    Open latest online version →
+  </a>
+</div>
   </header>
 
   <nav>

@@ -31,6 +31,22 @@
         0 1px 4px rgba(0,0,0,0.10);
     }
 
+    /* ← Home */
+    .home-link {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: #999;
+      text-decoration: none;
+    }
+
+    .home-link:hover {
+      text-decoration: underline;
+    }
+
     .logo-wrap {
       text-align: center;
       margin-bottom: 32px;
@@ -63,10 +79,26 @@
       margin-bottom: 8px;
     }
 
-    .updated {
-      font-size: 13px;
+    .doc-meta {
+      margin: 0.8rem 0 2.5rem;
       color: #888;
-      margin-bottom: 40px;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+    .doc-meta-sub {
+      margin-left: 0.25em;
+    }
+    
+    .doc-latest-link {
+      margin-left: 0.9em;
+      color: inherit;
+      text-decoration: none;
+      /*text-underline-offset: 0.16em;*/
+      white-space: nowrap;
+    }
+    .doc-latest-link:hover {
+      color: #c0440a;
+      text-decoration: underline;
     }
 
     h2 {
@@ -121,6 +153,7 @@
     footer a {
       color: #777;
       text-decoration: none;
+      font-size: 10px;
     }
 
     footer a:hover {
@@ -142,14 +175,20 @@
 <body>
 <div class="wrap">
   <div style="position:relative; text-align:center; margin-bottom:32px;">
-    <a href="index.html" style="position:absolute;left:0;top:4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#999;text-decoration:none;">← Home</a>
+    <a class="home-link" href="index.html">← Home</a>
     <div class="logo-wrap" style="margin-bottom:0">
       <span class="logo-ja">朱影</span>
       <span class="logo-en">SHUKAGE</span>
     </div>
   </div>
   <h1>Terms of Use</h1>
-  <p class="updated">Last updated: June 2026</p>
+    <p class="doc-meta">
+      Last updated: June 2026
+      <span class="doc-meta-sub">(Bundled)</span>
+      <a class="doc-latest-link" href="https://mondellera.github.io/shukage-desk/terms.html" target="_blank" rel="noopener">
+        <br>Open latest online version →
+      </a>
+    </p>
 
   <div class="highlight">
     Please use ShuKage responsibly. ShuKage is a personal learning and practice tool;
@@ -263,8 +302,8 @@
 
   <footer>
     ShuKage (朱影) — Shadowing for Language Immersion on YouTube<br>
-    This extension is provided as-is for personal language learning use.<br>
-    <a href="privacy-policy.html">Privacy Policy</a>
+    This extension is provided as-is for personal language learning use.<br><br>
+    <a href="privacy-policy.html">Privacy Policy →</a>
   </footer>
 </div>
 </body>
