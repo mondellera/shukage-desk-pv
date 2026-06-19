@@ -6,7 +6,7 @@ ShuKage (朱影) is a Chrome extension for shadowing practice on YouTube.
 
 ## Pages
 
-- [Home](https://mondellera.github.io/shukage-desk-test/)
+- [Home](https://mondellera.github.io/shukage-desk/)
 
 ## Notes
 
