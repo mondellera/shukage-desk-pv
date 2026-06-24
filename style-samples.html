@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/fonts.css">
+  <title>ShuKage — Style Samples</title>
+  <style>
+    :root {
+      --bg:       #0e0e0e;
+      --surface:  #161616;
+      --border:   #2a2a2a;
+      --accent:   #AB3B3A;
+      --accent-d: rgb(172,59,58 / 0.8);
+      --text:     #d0d0d0;
+      --text-dim: #888;
+      --text-faint: #555;
+
+      --doc-meta-font-size: 10px;
+      --doc-meta-line-height: 1.35;
+      --doc-meta-gap: 0.15rem;
+      --doc-meta-bottom: 0.75rem;
+      --doc-title-font-size: 24px;
+      --doc-title-long-font-size: 18px;
+
+      --brand-ja: 'Noto Serif JP Kanji', serif;
+      --brand-en: 'JetBrains Mono', monospace;
+      --mono:     'JetBrains Mono', 'Courier New', monospace;
+      --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 120px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-bottom: 5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .logo-wrap {
+      text-align: center;
+    }
+
+    .logo-ja {
+      font-family: var(--brand-ja);
+      font-size: 44px;
+      font-weight: 300;
+      color: var(--text);
+      display: block;
+      letter-spacing: 0.12em;
+      line-height: 1.1;
+    }
+
+    .logo-en {
+      font-family: var(--brand-en);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      font-weight: 400;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .version {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+    }
+
+    .home-link {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+
+    .home-link:hover { color: var(--text-dim); }
+
+    .header-doc-title {
+      position: absolute;
+      left: 0;
+      bottom: var(--doc-meta-bottom);
+
+      font-family: var(--mono);
+      font-size: var(--doc-title-font-size);
+      line-height: 1;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .header-doc-title.is-long {
+      font-size: var(--doc-title-long-font-size);
+    }
+
+    .header-doc-meta {
+      position: absolute;
+      right: 0;
+      bottom: var(--doc-meta-bottom);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--doc-meta-gap);
+
+      color: var(--text-faint);
+      font-family: var(--mono);
+      font-size: var(--doc-meta-font-size);
+      line-height: var(--doc-meta-line-height);
+      text-align: right;
+    }
+
+    .header-doc-meta a {
+      color: inherit;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .header-doc-meta a:hover { color: var(--text-dim); }
+
+    /* ── Intro ── */
+    .intro {
+      margin-bottom: 40px;
+      color: var(--text-dim);
+      font-size: 13px;
+    }
+
+    .intro p { margin-bottom: 10px; }
+
+    .intro a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .intro a:hover { color: var(--text); }
+
+    /* ── Samples ── */
+    .samples {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .sample {
+      margin-bottom: 0;
+    }
+
+    .sample-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sample-title {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: lowercase;
+    }
+
+    .sample-note {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .shot-link {
+      display: block;
+      background: #050505;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition:
+        border-color 0.15s ease,
+        transform 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .shot-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      background: var(--surface);
+    }
+
+    .shot-link img {
+      background: #000;
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .shot-caption {
+      margin-top: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+    }
+
+    .shot-caption span {
+      color: var(--text-dim);
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-faint);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer a:hover { color: var(--text-dim); }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 36px 18px 96px;
+      }
+
+      header {
+        padding-bottom: 5.4rem;
+        margin-bottom: 40px;
+      }
+
+      .logo-ja {
+        font-size: 38px;
+      }
+
+      .logo-en {
+        font-size: 12px;
+      }
+
+      .header-doc-title.is-long {
+        font-size: 14px;
+        letter-spacing: 0.16em;
+      }
+
+      .header-doc-meta {
+        font-size: 9px;
+      }
+
+      .shot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .home-link,
+      .version {
+        top: 0;
+      }
+
+      .header-doc-title {
+        bottom: 2.15rem;
+      }
+
+      .header-doc-meta {
+        left: 0;
+        right: auto;
+        bottom: var(--doc-meta-bottom);
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .sample-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+    }
+    .style-props {
+        font-size: 11px;
+    }
+    .style-prop-header {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--accent-d);
+    }
+    .style-prop-items {
+      padding-right: 0.5ch;
+    }
+    .style-prop-label {
+      padding-right: 0.2ch;
+      text-transform: lowercase;
+      color: var(--text-dim);
+    }
+    .style-prop-value {
+      padding-right: 0.2ch;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body id="top">
+
+<header>
+  <a class="home-link" href="index.html">← Home</a>
+
+  <div class="logo-wrap">
+    <span class="logo-ja">朱影</span>
+    <span class="logo-en">SHUKAGE</span>
+  </div>
+
+  <span class="version">v0.1.0</span>
+
+  <div class="header-doc-title is-long" aria-label="Style Samples">
+    STYLE SAMPLES
+  </div>
+
+  <div class="header-doc-meta">
+    <div>Last updated: April 2026</div>
+    <a href="index.html">Back to index →</a>
+  </div>
+</header>
+
+<main>
+  <section class="intro" aria-label="Style samples introduction">
+    <p>
+      You can tweak the font and colors a little in Settings.
+    </p>
+    <p>
+      These samples show how the same controls can feel different with small changes to accent color, normal color, opacity, and font.
+    </p>
+  </section>
+
+  <section class="samples" aria-label="Style sample gallery">
+
+    <!-- 01 style #1 -->
+    <article class="sample" id="style-01">
+      <div class="sample-head">
+        <h2 class="sample-title">01 style #1</h2>
+        <div class="sample-note">green</div>
+      </div>
+
+      <div class="gallery">
+        <div>
+          <a
+            class="shot-link"
+            href="assets/images/style-samples/shukage-screenshot-green-29-203-215.png"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="assets/images/style-samples/shukage-screenshot-green-29-203-215.png"
+              alt="Style #1 green overall ShuKage screenshot"
+              loading="lazy"
+            >
+          </a>
+          <div class="shot-caption"><span>overall</span></div>
+        </div>
+
+        <div class="shot-grid">
+          <div>
+            <a
+              class="shot-link"
+              href="assets/images/style-samples/shukage-screenshot-green-stats-29-203-215.png"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="assets/images/style-samples/shukage-screenshot-green-stats-29-203-215.png"
+                alt="Style #1 green Practice Stats screenshot"
+                loading="lazy"
+              >
+            </a>
+            <div class="shot-caption"><span>practice stats</span></div>
+          </div>
+
+          <div>
+            <a
+              class="shot-link"
+              href="assets/images/style-samples/shukage-screenshot-green-wave-29-203-215.png"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="assets/images/style-samples/shukage-screenshot-green-wave-29-203-215.png"
+                alt="Style #1 green WaveScope screenshot"
+                loading="lazy"
+              >
+            </a>
+            <div class="shot-caption"><span>wavescope</span></div>
+          </div>
+        </div> <!-- grid -->
+        <div class="style-props">
+          <span class="style-prop-header">THEME</span>
+          <span class="style-prop-items">
+            <span class="style-prop-label">accent:</span><span class="style-prop-value">29 203 215</span>
+            <span class="style-prop-label">Normal:</span><span class="style-prop-value">204 204 204</span>
+            <span class="style-prop-label">Font:</span><span class="style-prop-value">JetBrains Condensed</span>
+          </span>
+          <span class="style-prop-header">LANGUAGE</span>
+          <span class="style-prop-items">
+            <span class="style-prop-label">font:</span><span class="style-prop-value">JetBrains Condensed</span>
+            <span class="style-prop-label">size:</span><span class="style-prop-value">10px</span>
+            <span class="style-prop-label">Font:</span><span class="style-prop-value">JetBrains Condensed</span>
+          </span>
+        </div>
+      </div> <!-- gallery -->
+    </article>
+
+
+
+
+
+
+
+
+color
+opacity
+100%
+
+VIDEO TITLE
+font
+
+JetBrains Condensed
+size
+11px
+
+color
+opacity
+85%
+
+MARKER TITLE
+font
+
+JetBrains Condensed
+size
+12px
+
+color
+opacity
+100%
+
+meta color
+meta scale
+100%
+
+meta opacity
+70%
+
+SELECTION
+color
+opacity
+100%
+
+CONTROL BAR COLORS
+link
+Normal op
+100%
+
+Accent op
+100%
+
+FONT PROFILES
+NEW
+Profile name
+font-family
+＋
+BUILT-IN
+JetBrains Condensed
+built-in
+JetBrains Mono
+condensed
+on
+stretch
+condensed
+features
+"ss01"
+tracking
+-0.02em
+scale-x
+0.92
+weight
+400
+
+
+
+
+
+    <!-- 02 style #2 -->
+    <article class="sample" id="style-02">
+      <div class="sample-head">
+        <h2 class="sample-title">02 style #2</h2>
+        <div class="sample-note">white</div>
+      </div>
+
+      <div class="gallery">
+        <div>
+          <a
+            class="shot-link"
+            href="assets/images/style-samples/shukage-screenshot-white-204-204-204.png"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="assets/images/style-samples/shukage-screenshot-white-204-204-204.png"
+              alt="Style #2 white overall ShuKage screenshot"
+              loading="lazy"
+            >
+          </a>
+          <div class="shot-caption"><span>overall</span></div>
+        </div>
+
+        <div class="shot-grid">
+          <div>
+            <a
+              class="shot-link"
+              href="assets/images/style-samples/shukage-screenshot-white-stats-204-204-204.png"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="assets/images/style-samples/shukage-screenshot-white-stats-204-204-204.png"
+                alt="Style #2 white Practice Stats screenshot"
+                loading="lazy"
+              >
+            </a>
+            <div class="shot-caption"><span>practice stats</span></div>
+          </div>
+
+          <div>
+            <a
+              class="shot-link"
+              href="assets/images/style-samples/shukage-screenshot-white-wave-204-204-204.png"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="assets/images/style-samples/shukage-screenshot-white-wave-204-204-204.png"
+                alt="Style #2 white WaveScope screenshot"
+                loading="lazy"
+              >
+            </a>
+            <div class="shot-caption"><span>wavescope</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 style #3 -->
+    <article class="sample" id="style-03">
+      <div class="sample-head">
+        <h2 class="sample-title">03 style #3</h2>
+        <div class="sample-note">blue</div>
+      </div>
+
+      <div class="gallery">
+        <div>
+          <a
+            class="shot-link"
+            href="assets/images/style-samples/shukage-screenshot-blue-29-169-215.png"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="assets/images/style-samples/shukage-screenshot-blue-29-169-215.png"
+              alt="Style #3 blue overall ShuKage screenshot"
+              loading="lazy"
+            >
+          </a>
+          <div class="shot-caption"><span>overall</span></div>
+        </div>
+
+        <div class="shot-grid">
+          <div>
+            <a
+              class="shot-link"
+              href="assets/images/style-samples/shukage-screenshot-blue-stats-29-169-215.png"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="assets/images/style-samples/shukage-screenshot-blue-stats-29-169-215.png"
+                alt="Style #3 blue Practice Stats screenshot"
+                loading="lazy"
+              >
+            </a>
+            <div class="shot-caption"><span>practice stats</span></div>
+          </div>
+
+          <div>
+            <a
+              class="shot-link"
+              href="assets/images/style-samples/shukage-screenshot-blue-wave-29-169-215.png"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="assets/images/style-samples/shukage-screenshot-blue-wave-29-169-215.png"
+                alt="Style #3 blue WaveScope screenshot"
+                loading="lazy"
+              >
+            </a>
+            <div class="shot-caption"><span>wavescope</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <span>朱影 SHUKAGE v0.1.0</span>
+  <a href="#top">BACK TO TOP ↑</a>
+</footer>
+
+</body>
+</html>
