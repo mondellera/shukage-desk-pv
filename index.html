@@ -83,6 +83,41 @@
     line-height: 1;
   }
 
+  .screen {
+    background: var(--paper);
+    padding: 72px 24px;
+  }
+
+  .screen-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .screen-frame {
+    margin: 0 auto;
+    padding: 10px;
+    background: #111;
+    border-radius: 8px;
+    box-shadow: 0 22px 60px rgba(0,0,0,0.16);
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+
+  .screen-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .screen-caption {
+    margin: 18px auto 0;
+    /*max-width: 680px;*/
+    font-size: 11px;
+    line-height: 1.8;
+    color: #777;
+  }
+
   /* ── Five ── */
   .five {
     position: relative;
@@ -664,12 +699,10 @@
 <!-- HERO -->
 <section class="hero">
   <div class="badge">CHROME EXTENSION — V 0.1.0</div>
-
   <div class="logo-wrap">
     <span class="logo-ja">朱影</span>
     <span class="logo-en">SHUKAGE</span>
   </div>
-
   <p class="tagline">
     Shadowing for Language Immersion on YouTube.<br>
     <span style="font-family: var(--brand-ja);">朱に交われば赤くなる</span> — Immerse yourself, become the language.
@@ -710,6 +743,22 @@
       a new language rather than formally study it — or you're an interpreter
       looking for spare-moment practice — ShuKage is built for immersion at your
       own pace.
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCT SCREENSHOT -->
+<section class="screen">
+  <div class="screen-inner">
+    <div class="section-label">SHUKAGE IN ACTION</div>
+    <figure class="screen-frame">
+      <img
+        src="assets/images/shukage-main-screen.png"
+        alt="ShuKage control bar and side panel on a YouTube video page"
+        loading="lazy">
+    </figure>
+    <p class="screen-caption">
+      Practice shadowing on any segment of any YouTube video with<br> markers, A-B loops, and voice recording in your browser.
     </p>
   </div>
 </section>
